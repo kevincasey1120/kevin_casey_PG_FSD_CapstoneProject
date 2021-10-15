@@ -14,18 +14,22 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.medicare.backend.services.UserDetailsServiceImpl;
+import com.medicare.backend.services.impl.UserDetailsServiceImpl;
 
+/**
+ * @author fsd developer:  kevin casey
+ *
+ */
 @EnableWebSecurity
 @Configuration
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class MySecurityConfig extends WebSecurityConfigurerAdapter{
     
 	@Autowired
-	private JwtAuthenticationEntryPoint unauthorizedEntryHandler;
+	private JwtAuthEntryPoint authFailedEntryHandler;
 	
 	@Autowired
-	private JwtAuthenticationFilter jwtAuthenticationEntryFilter;
+	private JwtAuthFilter jwtAuthEntryFilter;
 	
 	@Autowired
 	private UserDetailsServiceImpl userDetailsServiceImpl;
@@ -42,8 +46,7 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
 	}
 
 	@Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-    	auth.userDetailsService(this.userDetailsServiceImpl).passwordEncoder(passwordEncoder());
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception { auth.userDetailsService(this.userDetailsServiceImpl).passwordEncoder(passwordEncoder());
     }
 	
 	@Override
@@ -58,10 +61,10 @@ public class MySecurityConfig extends WebSecurityConfigurerAdapter{
 		     .antMatchers(HttpMethod.OPTIONS).permitAll()
 		     .anyRequest().authenticated()
 		     .and()
-		     .exceptionHandling().authenticationEntryPoint(unauthorizedEntryHandler)
+		     .exceptionHandling().authenticationEntryPoint(authFailedEntryHandler)
 		     .and()
 		     .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-		http.addFilterBefore(jwtAuthenticationEntryFilter, UsernamePasswordAuthenticationFilter.class);
+		http.addFilterBefore(jwtAuthEntryFilter, UsernamePasswordAuthenticationFilter.class);
 		
 	}
 }

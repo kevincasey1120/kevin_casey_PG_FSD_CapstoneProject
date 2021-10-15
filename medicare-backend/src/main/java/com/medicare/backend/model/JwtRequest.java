@@ -1,11 +1,16 @@
 package com.medicare.backend.model;
 
+/**
+ * @author fsd developer:  kevin casey
+ *
+ */
 public class JwtRequest {
 	
 	private String username;
 	private String password;
 
 	public JwtRequest() {
+
 	}
 
 	public JwtRequest(String username, String password) {

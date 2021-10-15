@@ -1,5 +1,9 @@
 package com.medicare.backend.model;
 
+/**
+ * @author fsd developer:  kevin casey
+ *
+ */
 public class JwtResponse {
 	
     private String token;
