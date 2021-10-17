@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -29,7 +30,11 @@ import java.util.Map;
 public class JwtUtils {
 
 	//-----------------------------------------------------------
+	@Value("${jwt.secret}")
 	private String secret;
+	
+
+	@Value("${jwt.jwtExpirationInMs}")
 	private int jwtExpirationInMs;
 	
 	  //-----------------------------------------------------------
