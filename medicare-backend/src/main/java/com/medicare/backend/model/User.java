@@ -1,5 +1,7 @@
 package com.medicare.backend.model;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
@@ -10,6 +12,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -43,9 +46,14 @@ public class User implements UserDetails {
     
     private boolean enabled=true;
     
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "user")
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "user")
     @JsonIgnore
-    private Set<UserRole> userroles=new HashSet<>();
+    List<UserRole> userroles = new ArrayList<>();
+    
+    //    private Set<UserRole> userroles=new HashSet<>();
+    
+    
+
     
     public User() {
     }
@@ -114,21 +122,21 @@ public class User implements UserDetails {
 		this.enabled = enabled;
 	}
 
-	public Set<UserRole> getUserroles() {
+	public List<UserRole> getUserroles() {
 		return userroles;
 	}
 
-	public void setUserroles(Set<UserRole> userroles) {
+	public void setUserroles(List<UserRole> userroles) {
 		this.userroles = userroles;
 	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		//---------------------------------------
-		Set<Authority> set=new HashSet<>();
+		List<Authority> set=new ArrayList<>();
 		//---------------------------------------
 		this.userroles.forEach(userRole -> {
-			set.add(new Authority(userRole.getRole().getRoleName()));
+			set.add(new Authority((userRole).getRole().getRoleName()));
 		});
 		return set;
 	}

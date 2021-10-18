@@ -39,6 +39,28 @@ public class MedicareBackendApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 		LOG.info("EXECUTING : BEGIN COMMAND LINE RUNNER");
+		/*User user = new User();
+		user.setFirstName("Kevin");
+		user.setLastName("Casey");
+		user.setEmail("kcaseyp@gmail.com");
+		user.setPassword(this.bCryptPasswordEncoder.encode("secret"));
+		user.setUsername("admin");
+		user.setPhone("9043281385");
+		user.setEnabled(true);
+
+		Role role = new Role();
+		role.setRoleId(101);
+		role.setRoleName("ADMIN");
+
+		Set<UserRole> userRoleSet = new HashSet<>();
+		UserRole userRole = new UserRole();
+		userRole.setRole(role);
+		userRole.setUser(user);
+
+		userRoleSet.add(userRole);
+
+		User user1 = this.userService.createUser(user, userRoleSet);
+		System.out.println("user name : " + user1.getUsername());*/
 
 		LOG.info("EXECUTING : END COMMAND LINE RUNNER");
 

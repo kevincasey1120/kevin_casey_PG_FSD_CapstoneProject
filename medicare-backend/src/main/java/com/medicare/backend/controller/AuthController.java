@@ -27,7 +27,7 @@ import com.medicare.backend.services.impl.UserDetailsServiceImpl;
  *
  */
 @RestController
-@CrossOrigin("*") // ALLOW (ALL) CrossOrigin Urls
+@CrossOrigin(origins = "http://ec2-18-116-81-29.us-east-2.compute.amazonaws.com") // ACCEPTS DATA To-FROM 'FRONTEND' URL
 public class AuthController {
 
 	@Autowired
@@ -59,11 +59,11 @@ public class AuthController {
 		}
 		
 		//--------------------------------------------------------
-		//<SUCCESS>  User Is Authenticated
-		//--------------------------------------------------------
 		UserDetails userDetails = this.userDetailsService.loadUserByUsername(jwtRequest.getUsername());
 		String token=this.jwtutils.generateToken(userDetails);
 		
+		//--------------------------------------------------------
+		//<SUCCESS>  -- IF RESPPONSE is :OK - User Is Authenticated
 		return ResponseEntity.ok(new JwtResponse(token));
 	}
 	

@@ -34,8 +34,8 @@ import com.medicare.backend.services.UserService;
  *
  */
 @RestController
+@CrossOrigin(origins = "http://ec2-18-116-81-29.us-east-2.compute.amazonaws.com") // ACCEPTS DATA To-FROM 'FRONTEND' URL
 @RequestMapping("/user")
-@CrossOrigin("*")
 public class UserController {
 
 	@Autowired

@@ -20,7 +20,7 @@ import com.medicare.backend.services.AdminService;
  *
  */
 @RestController
-@CrossOrigin("*")
+@CrossOrigin(origins = "http://ec2-18-116-81-29.us-east-2.compute.amazonaws.com") // ACCEPTS DATA To-FROM 'FRONTEND' URL
 @RequestMapping("/admin")
 public class AdminController {
      
