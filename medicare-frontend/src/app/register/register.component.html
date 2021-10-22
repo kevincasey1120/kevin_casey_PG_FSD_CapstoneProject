@@ -1,0 +1,141 @@
+
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<!DOCTYPE html>
+<html>
+
+<header role="contentinfo" style="background-color:rgb(40, 19, 163); color: antiquewhite;">
+    <br>
+    <p style="font-size: 40px;">&nbsp;  NEW USER REGISTRATION</p>
+</header>
+
+<body style="background-color:rgb(40, 19, 163)">
+<div class="container" >
+    <div class="row"  style="background-color: rgb(40, 19, 163)">
+        <div class="col-md-6">
+            <form>
+                <fieldset>
+                    <br>
+                    <br>
+                    <div class="form-group">
+                        <label for="firstname" style="font-size: 18px; color: rgb(209, 207, 207)"><span class="req" style="color: red">* </span > First Name: </label>
+                        <input required type="text" [(ngModel)]="user.firstname" name="firstname" id="firstname"
+                            class="form-control phone" maxlength="28" placeholder="Enter your first-name" />
+                            <div id="errFirst"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastname" style="font-size: 18px; color: rgb(209, 207, 207)"><span class="req" style="color: red">* </span> Last Name: </label>
+                        <input required type="text" [(ngModel)]="user.lastname" name="lastname" id="lastname"
+                            class="form-control phone" maxlength="28" placeholder="Enter your last-name" />
+                            <div id="errFirst"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email" style="font-size: 18px; color: rgb(209, 207, 207)"><span class="req" style="color: red">* </span> Email: </label>
+                        <input class="form-control" type="text" [(ngModel)]="user.email" name="email" id="txt" required
+                            placeholder="Enter valid email address" />
+                        <div id="errFirst"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone" style="font-size: 18px; color: rgb(209, 207, 207)"><span class="req" style="color: red">* </span> Phone Number: </label>
+                        <input class="form-control" type="text" [(ngModel)]="user.phone" name="phone" id="txt" required
+                            placeholder="( _ _ _ )  _ _ _ - _ _ _ _ " />
+                        <div id="errFirst"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="address" style="font-size: 18px; color: rgb(209, 207, 207)"><span class="req" style="color: red">* </span> Street Address: </label>
+                        <input class="form-control" type="text" [(ngModel)]="user.address" name="address" id="txt" required
+                            placeholder="Enter valid home address  (Street, City, State, Zip)" />
+                        <div id="errFirst"></div>
+                    </div>
+
+                    <br>
+                    <br>
+
+                    <div class="form-group">
+                        <label for="username" style="font-size: 18px; color: rgb(255, 255, 255)"><span class="req"  style="color: red">* </span> <a>UserName: </a> </label>
+                        <input required type="text" [(ngModel)]="user.username" name="username" id="username"
+                            class="form-control phone" maxlength="28" placeholder="Enter your account username" style="border-color: blue; background-color: rgb(177, 248, 242);"/>
+                        <div id="errFirst"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password" style="font-size: 18px; color: rgb(255, 254, 254)"><span class="req"  style="color: red">* </span> <a>Password: </a><small style="color: rgb(177, 248, 242)">( Note:  Your password is CaSe-SeNsiTivE )</small></label>
+                        <input class="form-control" type="text" [(ngModel)]="user.password" name="password" id="txt" required placeholder=""  style="border-color: blue; background-color: rgb(177, 248, 242);"/>
+                        <div id="errFirst"></div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <input class="btn btn-success" type="submit" name="submit_reg" value="Register" (click)="registerNow()">
+                        <button type="reset" style="margin-left: 20px;" mat-raised-button color="accent">Reset</button>
+                    </div>
+
+                </fieldset>
+            </form><!-- ends register form -->
+
+        </div><!-- ends col-6 -->
+
+        
+
+        <div class="col-md-6" style="background-color: rgb(29, 23, 66); padding-left: 30px;">
+            <form>
+                <fieldset>
+
+                    <br>   <br>   
+                    <div class="row">
+                        <legend class="text-center" style="font-size: 25px;  font-weight: bold; color: rgb(255, 13, 13);" > USER REGISTRATION - DISCLAIMER </legend>
+                    </div>
+
+                    <div class="row">
+
+                        <span style="font-size: 20px;  font-weight: bold; color: aliceblue;" >&nbsp;&nbsp;&nbsp;&nbsp;The personal information your are about to enter will likely be used by Medicare 
+                            (and our army of robo-callers) to provide you with a whole slew of 'hidden' charges, 'various' fees, and some other stuff you are probably better off just not thinking about.  </span>
+                        <p>
+                        <br>
+                        <span class="text-center" style="font-size: 20px;  font-weight: bold; color: aliceblue;" >No really...  you don't want to know </span>
+                        <p>
+                        <br>
+                        <span  style="font-size: 20px;  font-weight: bold; color: aliceblue;" >&nbsp;&nbsp;&nbsp;&nbsp;Rest assured that your private information is in capable hands, 
+                            and that </span>
+
+                        <span  style="font-size: 20px;  font-weight: bold; color: rgb(73, 243, 115);" ><i> "the good stuff" </i></span>
+
+                        <span  style="font-size: 20px;  font-weight: bold; color: aliceblue;" > will only be sold if we... (or our 'friends' ) feel that the finanial benefits in doing so, far outweighs any ethical concerns you might have. </span>
+
+                        <p>
+                        <br>
+                    
+                        <span  style="font-size: 20px;  font-weight: bold; color: aliceblue;" >So... if you are careless enought to acutally enter private information
+                             into this registration form, then you probably don't deserve to have 'private' information. </span>
+                     
+                             <p>
+                                <br>
+                        <span  style="font-size: 20px;  font-weight: bold; color: aliceblue;" > ...and MEDICARE is here to help you with that. &nbsp;  </span>
+                        <p>
+                            <br>
+                        <span  style="font-size: 20px;  font-weight: bold; color: aliceblue;" >  THANK YOU for CHOOSING - </span>
+                        <span  style="font-size: 20px;  font-weight: bold; color: rgb(42, 186, 253);" ><i> BLUE ! </i></span>
+                    </div>
+
+                </fieldset>
+            </form>    
+        </div><!-- ends col-6 -->
+
+        
+    </div>
+</div>
+</body>
+
+<br>
+
+<footer role="contentinfo" style="background-color:rgb(18, 17, 24); color: antiquewhite;">
+    <p style="text-align: right;  font-size: 20px;"> Developed by Kevin Casey, 2021 FullStack Web Development Course - 'Medicare' Capstone Project, &#169; 2021 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+    <p></p>
+</footer>
+</html>
