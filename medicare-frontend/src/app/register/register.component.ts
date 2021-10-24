@@ -11,13 +11,13 @@ import Swal from 'sweetalert2';
 export class RegisterComponent implements OnInit {
 
   public user={
-    username:'',
-    password:'',
     firstName:'',
     lastName:'',
     email:'',
     phone:'',
-    address:''
+    address:'',
+    username:'',
+    password:'',
   }
   constructor(private userService:UserService,private snack:MatSnackBar) { }
 
@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit {
 
   
     //addding user -- addUSer() -> UserService
-    this.userService.addUser(this.user).subscribe(
+    this.userService.createUser(this.user).subscribe(
       //on sucess
        (data)=>{
         console.log(data);

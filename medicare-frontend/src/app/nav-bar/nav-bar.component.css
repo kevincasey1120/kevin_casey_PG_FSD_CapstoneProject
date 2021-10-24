@@ -1,117 +1,72 @@
-.namehead{
-    text-decoration: solid;
-    text-align: justify;
-    font-size: 25px;
-    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+
+
+
+* Navbar container */
+.navbar {
+  overflow: hidden;
+  background-color: #333;
+  font-family: Arial;
 }
 
+/* Links inside the navbar */
+.navbar a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
 
-.btn {
-    background-color: #2e8fb6;
-    color: white;
-    padding: 12px;
-    font-size: 16px;
-    border: none;
-    outline: none;
-  }
-  
-  .dropdown {
-    position: absolute;
-    display: inline-block;
-  }
-  
-  /* Dropdown Content (Hidden by Default) */
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f1f1f1;
-    min-width: 160px;
-    z-index: 1;
-  }
-  
-  /* Links inside the dropdown */
-  .dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-  }
-  
-  /* Change color of dropdown links on hover */
-  .dropdown-content a:hover {background-color: #ddd}
-  
-  /* Show the dropdown menu on hover */
-  .dropdown:hover .dropdown-content {
-    display: block;
-  }
-
-
-
-/* Add a black background color to the top navigation */
-.navbar {
-  max-height: 70px;
-  background-color:rgb(2, 2, 100);
+/* The dropdown container */
+.dropdown {
+  float: left;
   overflow: hidden;
 }
 
-/* Style the links inside the navigation bar */
-.navbar a {
-float: left;
-color: #f2f2f2;
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
-font-size: 17px;
+/* Dropdown button */
+.dropdown .dropbtn {
+  font-size: 16px;
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit; /* Important for vertical align on mobile phones */
+  margin: 0; /* Important for vertical align on mobile phones */
 }
 
-/* Change the color of links on hover */
-.navbar a:hover {
-  background-color: #1bd333;
-  color: rgb(255, 255, 255);
+/* Add a red background color to navbar links on hover */
+.navbar a:hover, .dropdown:hover .dropbtn {
+  background-color: red;
 }
 
-/* Add a color to the active/current link */
-.navbar a.active {
-background-color:rgb(0, 0, 0);
-color: rgb(37, 181, 248);
-font-weight: bold;
+/* Dropdown content (hidden by default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-/* Right-aligned section inside the top navigation */
-.navbar-right {
-  float: right;
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
 }
 
-/* Right-aligned section inside the top navigation */
-.navbar-left {
-  float: left;
-}
-  
-
-
-
-.element {
-  flex-grow: 2;
-}
-.container {
-  display: flex; /* or inline-flex */
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
 }
 
-hr {
-  margin: 40px 0;
-}
-
-.hr1 {
-  border: 0;
-  border-top: 1px solid #CCC;
-}
-
-.hr2 {
-  border: 0;
-  border-top: 1px dashed #CCC;
-}
-
-.navbar-nav > li > a::after {
-  content: "|";
-  padding: 0 5px
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
 }

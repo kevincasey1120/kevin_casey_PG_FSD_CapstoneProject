@@ -11,24 +11,25 @@
     <p style="font-size: 40px;">&nbsp;  NEW USER REGISTRATION</p>
 </header>
 
+
 <body style="background-color:rgb(40, 19, 163)">
 <div class="container" >
     <div class="row"  style="background-color: rgb(40, 19, 163)">
         <div class="col-md-6">
-            <form>
+            <form (ngSubmit)="formSubmit()">
                 <fieldset>
                     <br>
                     <br>
                     <div class="form-group">
                         <label for="firstname" style="font-size: 18px; color: rgb(209, 207, 207)"><span class="req" style="color: red">* </span > First Name: </label>
-                        <input required type="text" [(ngModel)]="user.firstname" name="firstname" id="firstname"
+                        <input required type="text" [(ngModel)]="user.firstName" name="firstname" id="firstname"
                             class="form-control phone" maxlength="28" placeholder="Enter your first-name" />
                             <div id="errFirst"></div>
                     </div>
 
                     <div class="form-group">
                         <label for="lastname" style="font-size: 18px; color: rgb(209, 207, 207)"><span class="req" style="color: red">* </span> Last Name: </label>
-                        <input required type="text" [(ngModel)]="user.lastname" name="lastname" id="lastname"
+                        <input required type="text" [(ngModel)]="user.lastName" name="lastname" id="lastname"
                             class="form-control phone" maxlength="28" placeholder="Enter your last-name" />
                             <div id="errFirst"></div>
                     </div>
@@ -72,7 +73,9 @@
 
 
                     <div class="form-group">
-                        <input class="btn btn-success" type="submit" name="submit_reg" value="Register" (click)="registerNow()">
+
+                        <input class="btn btn-success" type="submit" value="Register">
+
                         <button type="reset" style="margin-left: 20px;" mat-raised-button color="accent">Reset</button>
                     </div>
 

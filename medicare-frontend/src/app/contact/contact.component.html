@@ -1,0 +1,128 @@
+<header role="contentinfo" style="background-color:rgb(40, 19, 163); color: antiquewhite;">
+    <br>
+    <p style="font-size: 40px;">&nbsp; CONTACT US</p>
+    
+</header>
+
+<body style="background-color:rgb(40, 19, 163)">
+<div class="container" >
+    <div class="row"  style="background-color: rgb(40, 19, 163)">
+        <div class="col-md-6">
+            <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+                <fieldset>
+                
+                    <div class="row">
+                        <div>
+                       
+                            <span  style="font-size: 18px;  font-weight: bold; color: aliceblue;" > OUR CONTACT PHONE  </span>
+                            <br>
+                            <span  style="font-size: 16px;  font-weight: normal; color: rgb(63, 236, 248);" >  (555) 555-5555  </span>
+                            <br>
+                        </div>
+                        <div>
+                            <br>
+                            <span  style="font-size: 18px;  font-weight: bold; color: aliceblue;" > OUR CONTACT ADDRESS  </span>
+                            <br>
+                            <span  style="font-size: 16px;  font-weight: normal; color: rgb(63, 236, 248);" >  123 NOWHERE ATAUL St.  </span>
+                            <br>
+                            <span  style="font-size: 16px;  font-weight: normal; color: rgb(63, 236, 248);" >  SOMEPLACE, HA, 5432  </span>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                            
+                    <div class="row">
+                      
+                        <legend class="text-left">
+                            <span class="req" style="font-weight: bold; font-size: 18px; color: rgb(247, 247, 247)">&nbsp;EMAIL US </span > 
+                                <span style="font-weight: normal; font-size: 18px; color: rgb(63, 236, 248);" ><i>&nbsp;&nbsp; - just fill out the form below</i></span >
+                        </legend> 
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="subject" style="font-size: 18px; color: rgb(63, 236, 248);"><span class="req" style="color: red">* </span > Subject: </label>
+                        <input style="font-weight: bold; font-size: 16px; width: 500px;" type="test" class="form-control" id="subject"  placeholder="Type purpose for your email"
+                         required [(ngModel)]="subject" name="subject">
+                         <div id="errFirst"></div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="fromName" style="font-size: 18px; color: rgb(63, 236, 248);"><span class="req" style="color: red">* </span > Sender's Name: </label>
+                        <input style="font-weight: bold; font-size: 16px; width: 500px;" type="test" class="form-control" id="fromName"  placeholder="Enter your name here"
+                         required [(ngModel)]="fromName" name="fromName">
+                         <div id="errFirst"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="from" style="font-size: 18px; color: rgb(63, 236, 248);"><span class="req" style="color: red">* </span > Sender's Email: </label>
+                        <input style="font-weight: bold; font-size: 16px; width: 500px;" type="email" class="form-control" id="from" aria-describedby="emailHelp" placeholder="Enter your address email"
+                         required [(ngModel)]="from" name="from">
+                         <div id="errFirst"></div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="from" style="font-size: 18px; color: rgb(63, 236, 248);"><span class="req" style="color: red">* </span > Email Message: </label>
+                        <textarea style = "font-weight: bold; font-size: 18px; border: 5px solid #1c1d66 !important;
+                         background-color: rgb(190, 190, 190); width: 500px; height: 160px;" required [(ngModel)]="body" id="body" name="body"></textarea>
+
+                    </div>
+            
+                
+                    <div class="form-group">
+                        <input class="btn btn-success" type="submit" value="Send EMAIL">
+                    </div>
+
+                </fieldset>
+            </form><!-- ends register form -->
+
+        </div><!-- ends col-6 -->
+
+        
+
+        <div class="col-md-6" style="background-color: rgba(29, 16, 100, 0.452); padding-left: 30px;">
+            <form>
+                <fieldset>
+
+                <br>   <br>     <br>   <br>     <br>   <br>     <br>     <br>   
+                    <div class="row">
+                        <label class="text-center" style="font-size: 25px;  font-weight: bold; color: rgb(81, 144, 240);" >  (Preview) EMAIL TO MEDICARE </label>
+                    </div>
+
+                    <div class="row">
+
+
+                        <div class ="container" >
+                            <br>
+                            <br> 
+                   
+                            <span style="font-weight: normal; font-size: 23px;  color: rgb(81, 144, 240);"> &nbsp;&nbsp;   SUBJECT : </span>
+                            <label style="font-weight: normal; font-size: 23px;  color: rgb(156, 156, 156);">&nbsp;&nbsp; {{subject}}</label>
+                            <br>
+                            <br> 
+                            <span style="font-weight: normal; font-size: 23px;  color: rgb(81, 144, 240);"> &nbsp;&nbsp;    TO : </span>
+                            <label style="font-weight: normal; font-size: 23px;  color: rgb(156, 156, 156);">&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;MEDICARE SUPPORT OFFICE</label>
+                            <br>
+                            <br>
+                            <span style="font-weight: normal; font-size: 23px;  color: rgb(81, 144, 240);">&nbsp;&nbsp;  FROM : </span>
+                            <label style="font-weight: normal; font-size: 23px;  color: rgb(156, 156, 156);"> &nbsp;&nbsp;  {{fromName}}</label>
+                            <br>
+                            <span style="font-weight: normal; font-size: 23px;  color: rgb(81, 144, 240);">&nbsp;&nbsp;   FROM EMAIL :</span>
+                            <label style="font-weight: normal; font-size: 23px;  color: rgb(156, 156, 156);"> &nbsp;&nbsp; {{from}}</label>
+                            <br>
+
+                            <br>
+                            <label style="font-weight: normal; font-size: 23px; color: rgb(81, 144, 240);">
+                                &nbsp;&nbsp; MESSAGE: </label>
+                            <br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<textarea readonly style = " color: rgb(156, 156, 156);  font-weight: bold; font-size: 18px; border: 5px solid rgba(29, 16, 100, 0.493) !important;  background-color: rgba(29, 16, 100, 0.493);
+                             width: 490px; height: 160px;">{{body}}</textarea>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>    
+        </div><!-- ends col-6 -->           `
+    </div>
+</div>
+</body>
