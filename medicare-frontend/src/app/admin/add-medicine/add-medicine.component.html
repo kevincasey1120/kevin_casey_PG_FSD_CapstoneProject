@@ -1,0 +1,65 @@
+<div class="bootstrap-wrapper">
+    <div class="container">
+       <div class="row">
+          <div class="col-md-6 offset-md-3" >
+            <br>
+            <br>
+            <h1 class="text-center" style="font-weight: normal; color: aliceblue;" >Add New Medicine</h1>
+            <div class="container">
+               <form (ngSubmit)="addMedicine()">
+
+                <mat-form-field class="full-width" appearance="outline" style="font-weight: 18px;">
+                 <mat-label>Name</mat-label>
+                 <input required [(ngModel)]="medicine.medname"
+                 name="name" matInput placeholder="Name" style=" font-weight: normal; font-size: 18px; color: rgb(250, 250, 250);">
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Price</mat-label>
+                    <input required [(ngModel)]="medicine.price"
+                    name="price" matInput placeholder="Price" style=" font-weight: normal; font-size: 18px; color: rgb(250, 250, 250);">
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="outline" style= "width: 700px; ">
+                    <mat-label >Description</mat-label>
+                    <input required [(ngModel)]="medicine.description"
+                    name="description" matInput placeholder="Description" style=" font-weight: normal; font-size: 18px; color: rgb(250, 250, 250);">
+                </mat-form-field>
+
+                <mat-form-field class="full-width" appearance="outline"  style= "width: 120px;">
+                  <mat-label>Dosage</mat-label>
+                  <input required [(ngModel)]="medicine.dosage"
+                  name="dosage" matInput placeholder="Dosage" style=" font-weight: normal; font-size: 18px; color: rgb(250, 250, 250);">
+                </mat-form-field>
+
+        
+                <mat-form-field class="full-width" appearance="outline">
+                    <mat-label>Category</mat-label>
+                    <input required [(ngModel)]="medicine.category"
+                    name="category" matInput placeholder="Category" style=" font-weight: normal; font-size: 18px; color: rgb(250, 250, 250);">
+                </mat-form-field>
+      
+                <mat-form-field class="full-width" appearance="outline">
+                  <mat-label>Quantity</mat-label>
+                  <input required [(ngModel)]="medicine.quantity"
+                  name="quantity" matInput placeholder="Quantity" style=" font-weight: normal; font-size: 18px; color: rgb(250, 250, 250);">
+                </mat-form-field>
+
+                <div class="full-width">
+                    <input required type="radio" value="true" name="enabled" [(ngModel)]="medicine.enabled">
+                    <label for="Enabled" style="font-weight: normal; color: aliceblue;">&nbsp;&nbsp;Enabled</label><br>
+                    <input required type="radio" value="false" name="enabled" [(ngModel)]="medicine.enabled">
+                    <label for="Enabled" style="font-weight: normal; color: aliceblue;">&nbsp;&nbsp;Disabled</label>
+                 </div>
+
+                <div class="container text-right">
+                 <button type="submit" style= "width: 180px; margin-left: 20px;" mat-raised-button color="primary">Add Medicine</button>
+                 <button type="reset" style= "margin-left: 20px;" mat-raised-button color="accent">Reset</button>
+                </div>
+              </form>
+            </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ 
