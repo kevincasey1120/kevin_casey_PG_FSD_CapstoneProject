@@ -10,7 +10,7 @@
 
 
 <!------ XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  (PRE-LOGIN) PAGES ONLY  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
-  <nav *ngIf="!this.loginService.userPagesUnlocked && !this.loginService.adminPagesUnlocked" class="navbar navbar-expand-lg navbar-light bg-light"  style="background:rgb(29, 26, 238)!important;">
+  <nav *ngIf="!this.loginService.isLoggedIn() " class="navbar navbar-expand-lg navbar-light bg-light"  style="background:rgb(29, 26, 238)!important;">
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
       
@@ -25,29 +25,7 @@
       <li class="nav-item active">
         <a class="navbar-brand" href="/contact" style="margin-right:50px">Contact</a>
       </li>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <li class="nav-item active">
-        <span style="font-size: 18px; color: aliceblue;">SEARCH (By Keyword)</span>
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="font-size: 18px; font-weight: bold;">
-        </li>
-        <li class="nav-item active">
-          &nbsp;&nbsp;
-        <button class="btn btn-outline-success" style="height: 50px; font-size: 18px;"  type="submit">Search</button>
-      </li>
-
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-      <form class="form-inline" style="width: 200px;">
-        <span style="font-size: 18px; color: aliceblue;">FILTER (By Category)</span>&nbsp;&nbsp;
-        <span class="nav-item dropdown" style="text-align: left;">
-          <select style="font-weight: bold; font-size: 16px; width: 250px;" [(ngModel)]="selectedBrand" (change)="valueSelected()" placeholder="fsdfsdf">
-            <option *ngFor="let item of fullCategories" style="font-weight: bold; font-size: 16px;" >{{ item.cat }}</option>
-          </select>
-        </span>
-      </form>
+     
     </ul>
   </div>
 
@@ -63,11 +41,8 @@
 
 
 
-
-
-
-<!------ XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  (PRE-LOGIN) PAGES ONLY  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
-  <nav *ngIf="this.loginService.adminPagesUnlocked"  class="navbar navbar-expand-lg navbar-light bg-light"  style="background:rgb(105, 3, 3)!important;">
+<!------ XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  (ADMIN) PAGES ONLY  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+  <nav *ngIf="this.loginService.isLoggedIn() && this.loginService.getUserRole() === 'ROLE_ADMIN'"  class="navbar navbar-expand-lg navbar-light bg-light"  style="background:rgb(116, 24, 24)!important;">
   
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
@@ -83,42 +58,20 @@
         <li class="nav-item active">
           <a class="navbar-brand" href="/contact" style="margin-right:50px">Contact</a>
         </li>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <li class="nav-item active">
-          <span style="font-size: 18px; color: aliceblue;">SEARCH (By Keyword)</span>
-            <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="font-size: 18px; font-weight: bold;">
-          </li>
-          <li class="nav-item active">
-            &nbsp;&nbsp;
-          <button class="btn btn-outline-success" style="height: 50px; font-size: 18px;"  type="submit">Search</button>
-        </li>
-  
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  
-        <form class="form-inline" style="width: 200px;">
-          <span style="font-size: 18px; color: aliceblue;">FILTER (By Category)</span>&nbsp;&nbsp;
-          <span class="nav-item dropdown" style="text-align: left;">
-            <select style="font-weight: bold; font-size: 16px; width: 250px;" [(ngModel)]="selectedBrand" (change)="valueSelected()" placeholder="fsdfsdf">
-              <option *ngFor="let item of fullCategories" style="font-weight: bold; font-size: 16px;" >{{ item.cat }}</option>
-            </select>
-          </span>
-        </form>
+        
+      
       </ul>
     </div>
   
     <form class="form-inline">
-      <a class="navbar-brand" href="#" style="font-size: 22px;  margin-right:50px; font-weight: bold; color: rgb(228, 10, 10);">(ADMINISTRATOR)<span style="font-size: 22px;  margin-right:50px; font-weight: normal; color: rgb(255, 255, 255);">&nbsp;&nbsp;KEVIN CASEY</span></a>
+      <a class="navbar-brand" href="#" style="font-size: 27px;  margin-right:10px; font-weight: normal; color: rgb(252, 11, 11);">ADMINISTRATOR - MODE</a>
     </form>
-  
   </nav>
 
 
 
-<!------ XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  (PRE-LOGIN) PAGES ONLY  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
-<nav *ngIf="this.loginService.userPagesUnlocked"  class="navbar navbar-expand-lg navbar-light bg-light"  style="background:rgb(17, 77, 37)!important;">
+<!------ XXXXXXXXXXXXXXXXXXXXXXXXXXXXX  (USER) PAGES ONLY  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-->
+<nav *ngIf="this.loginService.isLoggedIn() && this.loginService.getUserRole() === 'ROLE_USER'"  class="navbar navbar-expand-lg navbar-light bg-light"  style="background:rgb(17, 77, 37)!important;">
   
   <div class="collapse navbar-collapse" id="navbarNavDropdown">
     <ul class="navbar-nav">
@@ -134,38 +87,28 @@
       <li class="nav-item active">
         <a class="navbar-brand" href="/contact" style="margin-right:50px">Contact</a>
       </li>
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <li class="nav-item active">
-        <span style="font-size: 18px; color: aliceblue;">SEARCH (By Keyword)</span>
-          <input class="form-control" type="search" placeholder="Search" aria-label="Search" style="font-size: 18px; font-weight: bold;">
-        </li>
-        <li class="nav-item active">
-          &nbsp;&nbsp;
-        <button class="btn btn-outline-success" style="height: 50px; font-size: 18px;"  type="submit">Search</button>
-      </li>
-
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-      <form class="form-inline" style="width: 200px;">
-        <span style="font-size: 18px; color: aliceblue;">FILTER (By Category)</span>&nbsp;&nbsp;
-        <span class="nav-item dropdown" style="text-align: left;">
-          <select style="font-weight: bold; font-size: 16px; width: 250px;" [(ngModel)]="selectedBrand" (change)="valueSelected()" placeholder="fsdfsdf">
-            <option *ngFor="let item of fullCategories" style="font-weight: bold; font-size: 16px;" >{{ item.cat }}</option>
-          </select>
-        </span>
-      </form>
+      &nbsp;&nbsp;&nbsp;
+      
     </ul>
   </div>
 
-  <form class="form-inline">
-    <button mat-list-item routerLink='/user/cart'><mat-icon>add_shopping_cart</mat-icon>Shopping cart</button>
-  </form>
 
   <form class="form-inline">
-    <a class="navbar-brand" href="#" style="font-size: 22px;  margin-right:50px; font-weight: bold; color: rgb(89, 238, 30);">(USER)<span style="font-size: 22px;  margin-right:50px; font-weight: normal; color: rgb(255, 255, 255);">&nbsp;&nbsp;KEVIN CASEY</span></a>
-  </form>
 
+    <span style="font-size: 27px;  font-weight: normal; color: rgb(255, 255, 255);">"Hello There  - </span>
+    <span style="font-size: 27px;  font-weight: normal; color: rgb(255, 255, 255);"> <i>&nbsp;&nbsp;{{this.loginService.getUser().firstName}}"</i>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+   
+    <a class="navbar-brand" href="#" style="font-size: 22px;  font-weight: bold; color: rgb(89, 238, 30);">CUSTOMER MODE   </a>
+  </form>
+ 
+
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+  <form class="form-inline">
+    <img style="width: 42px;" src="../assets/cart1.png">
+    <button style="font-size: 25px; color: aliceblue;"  routerLink="/user/cart" class="btn">Shopping Cart</button>
+</form>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 </nav>

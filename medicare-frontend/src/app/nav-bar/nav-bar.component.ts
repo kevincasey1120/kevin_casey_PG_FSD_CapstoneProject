@@ -37,6 +37,8 @@ export class NavBarComponent implements OnInit {
   
   ngOnInit(): void {
     
+
+
     this.loginService.loginStatusSubject.subscribe(
       (data:any)=>{
 
@@ -51,9 +53,6 @@ export class NavBarComponent implements OnInit {
       }
     ); 
   }
-
-
-
 
 
   public logout(){
