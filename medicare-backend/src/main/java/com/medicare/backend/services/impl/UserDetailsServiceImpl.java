@@ -27,10 +27,10 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		
 		//-------------------------------------------
 		if(thisUser != null) {
-			LOG.info("<USER DETAILS SERVICE> --SUCCESS--  USER RECORD RETRIEVED");
+			LOG.info("<USER DETAILS SERVICE> --SUCCESS--  USER ("+username+") RECORD RETRIEVED");
 			
 		}else {
-			LOG.info("<USER DETAILS SERVICE - ERROR>  USER RECORD WAS NOT FOUND");
+			LOG.info("<USER DETAILS SERVICE - ERROR>  USER ("+username+") RECORD WAS NOT FOUND");
 			throw new UsernameNotFoundException("<USER DETAILS SERVICE - ERROR>  USER RECORD WAS NOT FOUND");
 		}
 		

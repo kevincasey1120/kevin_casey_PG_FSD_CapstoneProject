@@ -19,8 +19,9 @@ import com.medicare.backend.services.AdminService;
  * @author fsd developer:  kevin casey
  *
  */
+
 @RestController
-@CrossOrigin(origins = "http://ec2-18-116-81-29.us-east-2.compute.amazonaws.com") // ACCEPTS DATA To-FROM 'FRONTEND' URL
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @RequestMapping("/admin")
 public class AdminController {
      
@@ -57,19 +58,28 @@ public class AdminController {
 	
 	/**
 	 * @param medid
+	 * @return
+	 */
+	@GetMapping("/getmedicine/{medname}")
+	public Medicine getMedicineByName(@PathVariable("medname") String medname){
+		return this.adminService.getMedicineByName(medname);
+	}
+	
+	/**
+	 * @param medid
 	 * @param medicine
 	 * @return
 	 */
-	@PostMapping("/update-medicine/{id}")
-	public Medicine updateMedicineById(@PathVariable("id") int medid,@RequestBody Medicine medicine){
+	@PostMapping("/update-medicine/{medid}")
+	public Medicine updateMedicineById(@PathVariable("medid") int medid,@RequestBody Medicine medicine){
 		return this.adminService.updateMedicine(medid, medicine);
 	}
 	
 	/**
 	 * @param medid
 	 */
-	@DeleteMapping("/remove-medicine/{id}")
-	public void deleteMedicine(@PathVariable("id") int medid) {
-		this.adminService.deleteMedicine(medid);
+	@DeleteMapping("/remove-medicine/{medid}")
+	public void removeMedicine(@PathVariable("medid") int medid) {
+		this.adminService.removeMedicine(medid);
 	}
 }

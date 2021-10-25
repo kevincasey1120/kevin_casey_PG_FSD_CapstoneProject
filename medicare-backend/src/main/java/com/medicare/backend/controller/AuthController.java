@@ -26,8 +26,10 @@ import com.medicare.backend.services.impl.UserDetailsServiceImpl;
  * @author fsd developer:  kevin casey
  *
  */
+
+//@CrossOrigin(origins = "http://ec2-18-116-81-29.us-east-2.compute.amazonaws.com") // ACCEPTS DATA To-FROM 'FRONTEND' URL
 @RestController
-@CrossOrigin(origins = "http://ec2-18-116-81-29.us-east-2.compute.amazonaws.com") // ACCEPTS DATA To-FROM 'FRONTEND' URL
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AuthController {
 
 	@Autowired

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.medicare.backend.exception.UserFoundException;
@@ -28,18 +29,26 @@ import com.medicare.backend.model.UserRole;
 import com.medicare.backend.services.CartService;
 import com.medicare.backend.services.PurchaseService;
 import com.medicare.backend.services.UserService;
+import com.medicare.backend.services.EmailService;
+
 
 /**
  * @author fsd developer:  kevin casey
  *
  */
+
+//@CrossOrigin(origins = "http://ec2-18-116-81-29.us-east-2.compute.amazonaws.com") // ACCEPTS DATA To-FROM 'FRONTEND' URL
 @RestController
-@CrossOrigin(origins = "http://ec2-18-116-81-29.us-east-2.compute.amazonaws.com") // ACCEPTS DATA To-FROM 'FRONTEND' URL
-@RequestMapping("/user")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
+@RequestMapping("/user")   // ? @RequestMapping("/api/users")
 public class UserController {
 
+	
 	@Autowired
 	private UserService userService;
+	
+	@Autowired
+	private EmailService emailService;
 	
 	@Autowired
 	private CartService cartService;
@@ -103,25 +112,15 @@ public class UserController {
 	
 	
 	/**
-	 * @param userId
+	 * @param userid
 	 */
-	@DeleteMapping("/{userId}")
-	public void deleteUser(@PathVariable("userId") int userId) {
-		this.userService.deleteUser(userId);
+	@DeleteMapping("/{userid}")
+	public void deleteUser(@PathVariable("userid") int userid) {
+		this.userService.deleteUser(userid);
 	}
 	
 	
 	//=============================== MEDICINES ======================================
-	/**
-	 * @param category
-	 * @return
-	 */
-	@GetMapping("/getmedicines/{category}")
-	public List<Medicine> getMedicinesByCategory(@PathVariable("category") String category){
-		List<Medicine> medicines=this.userService.getAllMedicinesByCategory(category);
-		return medicines;
-	}
-	
 	/**
 	 * @param medid
 	 * @return
@@ -131,6 +130,7 @@ public class UserController {
 		return this.userService.getMedicineByID(medid);
 	}
 	
+	
 	/**
 	 * @return
 	 */
@@ -139,6 +139,28 @@ public class UserController {
 		List<Medicine> medicines=this.userService.getAllMedicines();
 		return medicines;
 	}
+	
+	/**
+	 * @param category
+	 * @return
+	 */
+	@GetMapping("/getmedicinesbycat/{category}")
+	public List<Medicine> getMedicinesByCategory(@PathVariable("category") String category){
+		List<Medicine> medicines=this.userService.getAllMedicinesByCategory(category);
+		return medicines;
+	}
+	
+
+	/**
+	 * @param category
+	 * @return
+	 */
+	@GetMapping("/getmedicinesbyname/{medname}")
+	public List<Medicine> getMedicinesByName(@PathVariable("medname") String medname){
+		List<Medicine> medicines=this.userService.getAllMedicinesByName(medname);
+		return medicines;
+	}
+	
 	
     /**
      * @param userid
@@ -157,19 +179,19 @@ public class UserController {
      */
     @PostMapping("/addtocart")
     public void addToCart(@RequestBody HashMap<String,String> addCartRequest) {
-    	int userid=Integer.parseInt(addCartRequest.get("userId"));
-    	int medid=Integer.parseInt(addCartRequest.get("medId"));
+    	int userid=Integer.parseInt(addCartRequest.get("userid"));
+    	int medid=Integer.parseInt(addCartRequest.get("medid"));
     	int quantity=Integer.parseInt(addCartRequest.get("quantity"));
     	
         this.cartService.addToCart(userid, medid, quantity);
     }
     
     /**
-     * @param itemsId
+     * @param itemsid
      */
-    @DeleteMapping("/removeitem/{itemsId}")
-	public void deleteCartitem(@PathVariable("itemsId") int itemsId) {
-		this.cartService.deleteByMedicine(itemsId);
+    @DeleteMapping("/removeitem/{itemsid}")
+	public void deleteCartitem(@PathVariable("itemsid") int itemsid) {
+		this.cartService.deleteByMedicine(itemsid);
 	}
     
     /**
@@ -187,10 +209,10 @@ public class UserController {
      */
     @PostMapping("/updatequantity")
     public void updateQuantity(@RequestBody HashMap<String,String> updateDetails) {
-    	int itemsId=Integer.parseInt(updateDetails.get("itemsId"));
+    	int itemsid=Integer.parseInt(updateDetails.get("itemsid"));
     	int quantity=Integer.parseInt(updateDetails.get("quantity"));
     	
-        this.cartService.updateQuantity(itemsId, quantity);
+        this.cartService.updateQuantity(itemsid, quantity);
     }
     
 
@@ -200,9 +222,9 @@ public class UserController {
      */
     @PostMapping("/updateaddress")
     public void updateAddress(@RequestBody HashMap<String,String> updateDetails) {
-    	int userId=Integer.parseInt(updateDetails.get("userId"));
+    	int userid=Integer.parseInt(updateDetails.get("userid"));
     	String address=updateDetails.get("address");
-        this.userService.updateAddress(userId,address);
+        this.userService.updateAddress(userid,address);
     }
     
     /**
@@ -210,8 +232,35 @@ public class UserController {
      */
     @PostMapping("/updatepassword")
     public void updatePassword(@RequestBody HashMap<String,String> updateDetails) {
-    	int userId=Integer.parseInt(updateDetails.get("userId"));
+    	int userid=Integer.parseInt(updateDetails.get("userid"));
     	String password=updateDetails.get("password");
-        this.userService.updatePassword(userId,password);
+        this.userService.updatePassword(userid,password);
+    }
+
+    
+    @PostMapping("/sendemail")
+    public void sendEmail(@RequestBody HashMap<String,String> addCartRequest) {
+    	//--------------------------------------------------
+    	String from= addCartRequest.get("from");
+    	String fromName= addCartRequest.get("fromName");
+    	String subject= addCartRequest.get("subject");
+    	String body= addCartRequest.get("body");
+    	//--------------------------------------------------
+    	System.out.println("\n\nXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX  SENDING EMAIL  XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX");
+    	System.out.println("FROM: "+from+"     FROM-NAME: "+fromName+"     SUBJECT: "+subject);
+    	System.out.println("MESSAGE BODY: "+body);
+    	//--------------------------------------------------
+    	if(from != null && from.length() > 0 
+    			&& fromName != null && fromName.length() > 0 
+    			&& subject != null && subject.length() > 0 
+    			&& body != null && body.length() > 0 
+    			) {
+    	    this.emailService.sendElasticEmail(from,fromName,subject,body);
+    	   	System.out.println("[EMAIL SENT! ] ------SUCCESS------- THE EMAIL WAS SENT TO MEDICARE!");
+    	}else {
+    	   	System.out.println("[EMAIL SEND FAILURE ] ------FAILURE------- THE DATA WAS IN-VALID!");
+    	}
+    	//--------------------------------------------------
+      	System.out.println("XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\n\n");
     }
 }

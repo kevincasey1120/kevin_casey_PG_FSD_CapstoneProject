@@ -1,5 +1,6 @@
 package com.medicare.backend.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -17,16 +18,32 @@ public class Medicine {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int medid;
+	
+	@Column(name = "medname")
 	private String medname;
+	
+	@Column(name = "price")
 	private int price;
+	
+	@Column(name = "dosage")
+	private String dosage;
+
+	@Column(name = "description")
 	private String description;
+	
+	@Column(name = "enabled")
 	private boolean enabled=true;
+	
+	@Column(name = "category")
 	private String category;
+	
+	@Column(name = "quantity")
 	private int quantity;
 	
+	
 	public Medicine() {
-		
 	}
+	
 
 	public int getMedid() {
 		return medid;
@@ -52,6 +69,16 @@ public class Medicine {
 		this.price = price;
 	}
 
+	
+	public String getDosage() {
+		return dosage;
+	}
+
+	public void setDosage(String dosage) {
+		this.dosage = dosage;
+	}
+	
+	
 	public String getDescription() {
 		return description;
 	}
@@ -82,6 +109,11 @@ public class Medicine {
 
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
+	}
+
+	public Medicine orElseThrow(Object object) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

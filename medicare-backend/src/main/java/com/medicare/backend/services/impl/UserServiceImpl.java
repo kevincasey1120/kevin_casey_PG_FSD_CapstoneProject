@@ -41,11 +41,11 @@ public class UserServiceImpl implements UserService {
 		
 		User user = this.userRepository.findById(userid);
 		if(user != null) {
-			LOG.info("<USER SERVICE>  (USER) RECORD --RETRIEVED-- by getUser");
+			LOG.info("<USER SERVICE>  (USER) RECORD --RETRIEVED-- by getUser with ID("+userid+")");
 			return this.userRepository.findById(userid);
 			
 		}else {
-			LOG.info("<USER SERVICE - ERROR>  (USER) RECORD --NOT FOUND-- for getUser");
+			LOG.info("<USER SERVICE - ERROR>  (USER) RECORD --NOT FOUND-- for getUser with ID("+userid+")");
 			return null;
 		}
 	}
@@ -126,6 +126,25 @@ public class UserServiceImpl implements UserService {
 		//---------------------------------------
 		return medicines;
 	}
+	
+	
+	@Override
+	public List<Medicine> getAllMedicinesByName(String medname) {
+		
+		List<Medicine> medicines = this.medicineRepository.findByMednameLike(medname);
+		
+		//---------------------------------------
+		if(medicines.size() == 0) {
+			LOG.info("<USER SERVICE - WRNING>  ZERO MEDICINE ITEMS FOUND for MEDNAME ("+medname+")");
+			
+		}else {
+			LOG.info("<USER SERVICE>  (LIST of MEDICINEs) of size("+medicines.size()+") --RETRIEVED for MEDNAME ("+medname+")");
+		}
+		
+		//---------------------------------------
+		return medicines;
+	}
+	
 	
 	@Override
 	public User createUser(User user, Set<UserRole> userRoles) throws UserFoundException {

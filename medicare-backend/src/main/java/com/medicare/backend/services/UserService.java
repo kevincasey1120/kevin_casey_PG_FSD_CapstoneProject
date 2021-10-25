@@ -12,18 +12,29 @@ public interface UserService {
 
 	//Creating user
 	public User createUser(User user,Set<UserRole> userroles) throws UserFoundException;
+	
 	//getting user
 	public User getUser(int userid);
-	//deleting user
-	public void deleteUser(int userid);
-	//View all medicines
-	public List<Medicine> getAllMedicines();
-	//Get medicine by id
-	public Medicine getMedicineByID(int medid);
-	//update user address
-	public void updateAddress(int userid,String address);
+	
 	//update user password
 	public void updatePassword(int userid,String password);
+	
+	//deleting user
+	public void deleteUser(int userid);
+	
+	//View all medicines
+	public List<Medicine> getAllMedicines();
+	
+	//Get medicine by id
+	public Medicine getMedicineByID(int medid);
+	
+	//update user address
+	public void updateAddress(int userid,String address);
+	
+
 	//Get Medicine by category
 	public List<Medicine> getAllMedicinesByCategory(String category);
+	
+	//Get Medicine by medname
+	public List<Medicine> getAllMedicinesByName(String medname);
 }

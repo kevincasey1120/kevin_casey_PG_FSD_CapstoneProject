@@ -11,7 +11,7 @@ public interface AdminService {
 	//Update medicine
 	public Medicine updateMedicine(int medid,Medicine medicine);
 	//Remove medicine
-	public void deleteMedicine(int medid);
+	public void removeMedicine(int medid);
 	//View all medicines;
 	public List<Medicine> getAllMedicines();
 	//Get medicine by id

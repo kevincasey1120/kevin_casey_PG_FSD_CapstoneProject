@@ -31,5 +31,7 @@ public interface MedicineRepository extends JpaRepository<Medicine, Integer> {
 	 * @return
 	 */
 	public List<Medicine> findByCategoryLike(String category);
+	
+	public List<Medicine> findByMednameLike(String medname);	
 
 }

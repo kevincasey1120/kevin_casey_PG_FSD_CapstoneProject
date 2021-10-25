@@ -3,16 +3,15 @@ package com.medicare.backend.model;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -36,23 +35,37 @@ public class User implements UserDetails {
     private int id;
 	
 	//------------------------------
+    @Column(name = "username")
     private String username;
+    
+    @Column(name = "password")
     private String password;
+    
+    @Column(name = "firstName")
     private String firstName;
+    
+    @Column(name = "lastName")
     private String lastName;
+    
+    @Column(name = "email")
     private String email;
+    
+    @Column(name = "phone")
     private String phone;
+    
+    @Column(name = "address")
     private String address;
     
+    @Column(name = "enabled")
     private boolean enabled=true;
+    
     
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER, mappedBy = "user")
     @JsonIgnore
+    @Column(name = "userroles")
     List<UserRole> userroles = new ArrayList<>();
     
     //    private Set<UserRole> userroles=new HashSet<>();
-    
-    
 
     
     public User() {

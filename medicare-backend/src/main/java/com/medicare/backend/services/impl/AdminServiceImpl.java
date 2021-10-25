@@ -56,7 +56,7 @@ public class AdminServiceImpl implements AdminService{
 
 	
 	@Override
-	public void deleteMedicine(int medid) {
+	public void removeMedicine(int medid) {
 		this.medicineRepository.deleteById(medid);
 		LOG.info("<ADMIN SERVICE>  --SUCCESS--  (MEDICINE) DATABASE RECORD --DELETED--");
 	}

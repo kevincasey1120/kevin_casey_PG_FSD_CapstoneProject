@@ -1,5 +1,6 @@
 package com.medicare.backend.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,8 +22,14 @@ public class PurchaseItems {
 	
 	//--------------
 	private int userid;
+	
+	@Column(name = "medname")
 	private String medname;
+	
+	@Column(name = "quantity")
     private int quantity;
+	
+	@Column(name = "price")
     private int price;
     
 	public PurchaseItems() {
