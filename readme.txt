@@ -1,8 +1,9 @@
 --------------------------    DEAR SIMPLI-LEARN EVALUATORS   -------------------------
-    
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx (PLEASE READ THIS) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx (PLEASE READ THIS) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
                              
     THE WEBPAGE ADDRESS IS:   http://ec2-3-22-70-236.us-east-2.compute.amazonaws.com
+
+    FOR THE BEST EXPERIENCE:   Use the... "GOOGLE CHROME BROWSER"
 
                             !!!!!!!!!!!!!!!IMPORTANT!!!!!!!!!!!!!!
 
