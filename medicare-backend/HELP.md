@@ -28,5 +28,4 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 - Enjoy  :)
      
 
- ssh -i "/Users/kevin/Admin/AWSKeyPair.pem" ec2-user@ec2-3-145-7-175.us-east-2.compute.amazonaws.com
     
