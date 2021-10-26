@@ -1,7 +1,12 @@
---------------------------    DEAR SIMPLI-LEARN EVALUATORS   -------------------------
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx (PLEASE READ THIS) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+-------------------------------------    DEAR SIMPLI-LEARN EVALUATORS   -------------------------
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx (PLEASE READ THIS) xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+--------------------------------------------------------------------------------------------------------
+NOTE:  The "JENKINS-PIPELINE TEST DOCUMENT" can be downloaded at the following link (or in the repo above)
+--------------------------------------------------------------------------------------------------------
+https://github.com/kevincasey1120/kevin_casey_PG_FSD_CapstoneProject/blob/main/JENKINS_PIPELINE_TESTING__CAPSTONE_KevinCasey__Medicare.doc
+--------------------------------------------------------------------------------------------------------
                              
-    THE WEBPAGE ADDRESS IS:   http://ec2-3-22-70-236.us-east-2.compute.amazonaws.com
+    THE WEBPAGE URL IS:   http://ec2-3-22-70-236.us-east-2.compute.amazonaws.com
 
     FOR THE BEST EXPERIENCE:   Use the... "GOOGLE CHROME BROWSER"
 
@@ -22,4 +27,6 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 - Enjoy  :)
      
+
+ ssh -i "/Users/kevin/Admin/AWSKeyPair.pem" ec2-user@ec2-3-145-7-175.us-east-2.compute.amazonaws.com
     
